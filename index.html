@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerConnect Portal | Royal Nefsea International School</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="logout-message" style="display:none;position:fixed;top:0;left:0;width:100%;background:#06d6a0;color:#fff;padding:1rem 0;text-align:center;z-index:9999;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+    Logged out successfully
+    <span id="close-logout-msg" style="margin-left:1.5rem;cursor:pointer;font-weight:400;">&times;</span>
+  </div>
+  <!-- Navigation Bar -->
+ <header class="navbar">
+  <div class="logo">
+    <img src="https://royalnefsea.org/wp-content/uploads/2020/12/royal_nefsea-Copy-1.jpg" alt="School Logo" />
+    <h1>CareerConnect Portal</h1>
+  </div>
+
+  <!-- ✅ Hamburger Icon -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ✅ Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="booth.html">Booths</a>
+    <a href="student.html">Students</a>
+    <a href="parent.html">Parents</a>
+    <a href="admin-login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Explore Careers, Inspire Dreams.</h1>
+      <p>
+        Welcome to the <strong>CareerConnect Portal</strong> — a digital gateway
+        for students, parents, and teachers to collaborate during
+        <strong>Career Day</strong> at Royal Nefsea International School.
+      </p>
+      <div class="hero-buttons">
+        <a href="student.html" class="btn primary-btn">Student Section</a>
+        <a href="parent.html" class="btn secondary-btn">Parent Feedback</a>
+        <a href="booth.html" class="btn tertiary-btn">Career Booths</a>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Info Section -->
+  <section class="info-section">
+    <h2>Connecting Students, Parents & Opportunities</h2>
+    <p>
+      The CareerConnect Portal is designed to make Career Day interactive,
+      data-driven, and inspiring. It brings together student aspirations,
+      parental insights, and professional showcases — all in one platform.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Royal Nefsea International School | All Rights Reserved.</p>
+  </footer>
+
+  <!-- Show logout message if redirected from logout -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('logout') === '1') {
+        var msg = document.getElementById('logout-message');
+        msg.style.display = 'block';
+        document.getElementById('close-logout-msg').onclick = function() {
+          msg.style.display = 'none';
+        };
+        // Optionally auto-hide after 4s
+        setTimeout(function() { msg.style.display = 'none'; }, 4000);
+        // Remove ?logout=1 from URL without reloading
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    })();
+  </script>
+<script src="app.js"></script>
+<script src="booth.js"></script>
+<script src="student.js"></script>
+<script src="parent.js"></script>
+<script src="certificate.js"></script>
+
+</body>
+</html>

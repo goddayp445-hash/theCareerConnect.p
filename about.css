@@ -1,0 +1,232 @@
+/* about.css — Modern soft-gradient UI for About Page */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(135deg, #eaf6ff, #ffffff, #f8faff);
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo h1 {
+  font-size: 1.3rem;
+  color: #0077b6;
+  font-weight: 600;
+}
+
+.nav-links a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #0077b6;
+}
+
+/* Hamburger Icon + Responsive dropdown (copied from main styles) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #0077b6;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Navigation (Hidden by Default) */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .nav-links.open {
+    max-height: 300px;
+    opacity: 1;
+    padding: 1rem 0;
+  }
+
+  .menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 10%;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem;
+  color: #023e8a;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.hero-image img {
+  width: 420px;
+  max-width: 100%;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Overview */
+.overview {
+  padding: 3rem 10%;
+  background: #fff;
+  border-radius: 20px;
+  margin: 2rem 10%;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.overview h2 {
+  color: #0077b6;
+  margin-bottom: 1rem;
+}
+
+.overview ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  color: #444;
+}
+
+/* Team Section */
+.team {
+  padding: 3rem 10%;
+  text-align: center;
+}
+
+.team h2 {
+  color: #0077b6;
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.team-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  color: #023e8a;
+  margin-bottom: 0.3rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #0077b6;
+  color: white;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image img {
+    margin-top: 2rem;
+  }
+}

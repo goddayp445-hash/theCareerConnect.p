@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Entry | CareerConnect Portal</title>
+  <link rel="stylesheet" href="student.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://royalnefsea.org/wp-content/uploads/2020/12/royal_nefsea-Copy-1.jpg" alt="School Logo" />
+      <h1>CareerConnect Portal</h1>
+    </div>
+    
+    <!-- ✅ Hamburger Icon -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ✅ Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="booth.html">Booths</a>
+    <a href="student.html" class="active">Students</a>
+    <a href="parent.html">Parents</a>
+    <a href="admin-login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="card form-section">
+      <h2>Student Entry Form</h2>
+      <p>Register students' details and their career interests for Career Day.</p>
+
+      <form id="studentForm">
+        <label for="studentName">Full Name</label>
+        <input type="text" id="studentName" placeholder="Enter student name" required>
+
+        <label for="studentClass">Class</label>
+        <input type="text" id="studentClass" placeholder="e.g. SS1" required>
+
+        <label for="careerInterest">Career Interest</label>
+        <input type="text" id="careerInterest" placeholder="e.g. Engineering" required>
+
+        <button type="submit" class="btn primary-btn">Add Student</button>
+      </form>
+    </section>
+
+    <section class="card table-section">
+      <h2>Registered Students</h2>
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Career Interest</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Student rows will be inserted here by JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Royal Nefsea International School | Student Entry Section</p>
+  </footer>
+
+<script src="app.js"></script>
+<script src="booth.js"></script>
+<script src="student.js"></script>
+<script src="parent.js"></script>
+<script src="certificate.js"></script>
+
+<!-- Loader Overlay -->
+<div id="loaderOverlay">
+  <div class="spinner"></div>
+  <p>Saving your entry, please wait...</p>
+</div>
+
+</body>
+</html>

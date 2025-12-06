@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Feedback | CareerConnect Portal</title>
+  <link rel="stylesheet" href="parent.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://royalnefsea.org/wp-content/uploads/2020/12/royal_nefsea-Copy-1.jpg" alt="School Logo" />
+      <h1>CareerConnect Portal</h1>
+    </div>
+    
+    <!-- ✅ Hamburger Icon -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ✅ Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="booth.html">Booths</a>
+    <a href="student.html">Students</a>
+    <a href="parent.html" class="active">Parents</a>
+    <a href="admin-login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>We Value Parent Feedback</h1>
+      <p>
+        Your insights help shape our students’ future paths.  
+        Kindly share your thoughts about the <strong>Career Day</strong> experience.
+      </p>
+    </div>
+     <div class="hero-image">
+      <img src="images/parent feedback page.png" alt="Career Booth Illustration" />
+    </div>
+  </section>
+
+  <!-- Feedback Form Section -->
+  <section class="form-section">
+    <div class="feedback-card">
+      <h2>Submit Your Feedback</h2>
+      <form id="parentForm">
+        <label for="parentName">Parent Name</label>
+        <input type="text" id="parentName" placeholder="Enter your name" required />
+
+        <label for="studentName">Ward's Name</label>
+        <input type="text" id="studentName" placeholder="Enter your child’s name" required />
+
+        <label for="feedback">Your Feedback</label>
+        <textarea id="feedback" placeholder="Write your feedback..." required></textarea>
+
+        <button type="submit" class="btn primary-btn">Submit Feedback</button>
+      </form>
+    </div>
+
+    <div class="feedback-list">
+      <h2>All Feedback</h2>
+      <table id="parentTable">
+        <thead>
+          <tr>
+            <th>Parent</th>
+            <th>Ward</th>
+            <th>Message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS will insert here -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ✅ Recent Feedback Section -->
+  <section class="recent-section">
+    <h2>Recent Feedback</h2>
+    <div id="recentFeedback" class="recent-container">
+      <p>No recent feedback yet.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Royal Nefsea International School | Parent Feedback Section</p>
+  </footer>
+
+<script src="app.js"></script>
+<script src="booth.js"></script>
+<script src="student.js"></script>
+<script src="parent.js"></script>
+<script src="certificate.js"></script>
+
+<!-- Loader Overlay -->
+<div id="loaderOverlay">
+  <div class="spinner"></div>
+  <p>Saving your entry, please wait...</p>
+</div>
+
+</body>
+</html>

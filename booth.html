@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Booth Data | CareerConnect Portal</title>
+  <link rel="stylesheet" href="booth.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://royalnefsea.org/wp-content/uploads/2020/12/royal_nefsea-Copy-1.jpg" alt="School Logo" />
+      <h1>CareerConnect Portal</h1>
+    </div>
+
+  <!-- ✅ Hamburger Icon -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ✅ Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="booth.html" class="active">Booths</a>
+    <a href="student.html">Students</a>
+    <a href="parent.html">Parents</a>
+    <a href="admin-login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Manage Career Booth Data</h1>
+      <p>
+        Record and organize information about each booth, its representatives, and its focus area for <strong>Career Day</strong>.
+        Empower your event coordination with easy data tracking.
+      </p>
+    </div>
+    
+  </section>
+
+  <!-- Booth Entry Section -->
+  <section class="form-section">
+    <div class="form-card">
+      <h2>Add Booth Information</h2>
+      <form id="boothForm">
+        <label for="boothName">Booth Name</label>
+        <input type="text" id="boothName" placeholder="e.g. Engineering" required />
+
+        <label for="representative">Representative(s)</label>
+        <input type="text" id="representative" placeholder="Enter representative names" required />
+
+        <label for="description">Booth Description</label>
+        <textarea id="description" placeholder="Short description of the booth" required></textarea>
+
+        <button type="submit" class="btn primary-btn">Add Booth</button>
+      </form>
+    </div>
+
+    <div class="data-card">
+      <h2>Registered Career Booths</h2>
+      <table id="boothTable">
+        <thead>
+          <tr>
+            <th>Booth Name</th>
+            <th>Representative(s)</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Booth rows generated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <!-- Recent Booths Section -->
+<section class="recent-section">
+  <h2>Recent Career Booths</h2>
+  <div id="recentBooths" class="recent-container">
+    <p>No recent booths added yet.</p>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Royal Nefsea International School | Career Booth Section</p>
+  </footer>
+  
+<script src="app.js"></script>
+<script src="booth.js"></script>
+<script src="student.js"></script>
+<script src="parent.js"></script>
+<script src="certificate.js"></script>
+
+<!-- Loader Overlay -->
+<div id="loaderOverlay">
+  <div class="spinner"></div>
+  <p>Saving your entry, please wait...</p>
+</div>
+
+</body>
+</html>

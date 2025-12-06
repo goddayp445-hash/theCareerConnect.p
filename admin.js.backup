@@ -1,0 +1,138 @@
+// ADMIN DASHBOARD SCRIPT — UPDATED FOR PARENT RESPONSE SYSTEM
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Check login
+  const loggedIn = localStorage.getItem("rnisAdminLoggedIn");
+  if (!loggedIn) window.location.href = "admin-login.html";
+
+  // References
+  const logoutBtn = document.getElementById("logoutBtn");
+  const trafficDot = document.getElementById("trafficDot");
+  const trafficText = document.getElementById("trafficText");
+  const activeUsers = document.getElementById("activeUsers");
+  const sendBtn = document.getElementById("sendResponse");
+  const responseMessage = document.getElementById("responseMessage");
+  const responseStatus = document.getElementById("responseStatus");
+  const feedbackTableBody = document.getElementById("feedbackTableBody");
+  const boothTableBody = document.getElementById("boothTableBody");
+
+  // Logout
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("rnisAdminLoggedIn");
+    window.location.href = "admin-login.html";
+  });
+
+  // Sidebar navigation
+  const links = document.querySelectorAll(".sidebar a");
+  const sections = document.querySelectorAll(".dashboard-section");
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      links.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      const target = link.getAttribute("data-section");
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(target).classList.add("active");
+    });
+  });
+
+  // Load all data
+  let students = JSON.parse(localStorage.getItem("students")) || [];
+  let parentFeedbacks = JSON.parse(localStorage.getItem("parentFeedbacks")) || [];
+  let booths = JSON.parse(localStorage.getItem("booths")) || [];
+
+  // Dashboard Counts
+  document.getElementById("studentCount").textContent = students.length;
+  document.getElementById("feedbackCount").textContent = parentFeedbacks.length;
+  document.getElementById("boothCount").textContent = booths.length;
+
+  const positive = parentFeedbacks.filter(f => /good|great|excellent|love/i.test(f.feedback || "")).length;
+  const negative = parentFeedbacks.length - positive;
+  document.getElementById("positiveCount").textContent = positive;
+  document.getElementById("negativeCount").textContent = negative;
+
+  // Populate Parent Feedback Table
+  renderFeedbackTable();
+
+  function renderFeedbackTable() {
+    feedbackTableBody.innerHTML = parentFeedbacks.map((f, i) => `
+      <tr data-index="${i}">
+        <td>${f.parentName || "Anonymous"}</td>
+        <td>${f.studentName || "-"}</td>
+        <td>${f.feedback || ""}</td>
+        <td class="${f.status === "Replied" ? "status-replied" : "status-pending"}">${f.status || "Pending"}</td>
+        <td><button class="reply-btn" data-index="${i}">Reply</button></td>
+      </tr>
+    `).join("");
+  }
+
+  // Populate Booth Table
+  boothTableBody.innerHTML = booths.map(b => `
+    <tr>
+      <td>${b.boothName || "-"}</td>
+      <td>${b.category || "-"}</td>
+      <td>${b.summary || "-"}</td>
+    </tr>
+  `).join("");
+
+  // Selected Feedback Index
+  let selectedFeedbackIndex = null;
+
+  // Reply Button Event
+  feedbackTableBody.addEventListener("click", e => {
+    if (e.target.classList.contains("reply-btn")) {
+      selectedFeedbackIndex = parseInt(e.target.dataset.index);
+      const feedback = parentFeedbacks[selectedFeedbackIndex];
+
+      document.querySelector('[data-section="responses"]').click();
+
+      responseMessage.placeholder = `Reply to ${feedback.parentName || "Parent"} about ${feedback.studentName || "Student"}...`;
+      responseStatus.textContent = "";
+    }
+  });
+
+  // Send Response
+  sendBtn.addEventListener("click", () => {
+    if (selectedFeedbackIndex === null) {
+      responseStatus.textContent = "⚠️ Please select a parent feedback first.";
+      return;
+    }
+
+    const msg = responseMessage.value.trim();
+    if (!msg) {
+      responseStatus.textContent = "⚠️ Please enter your response message.";
+      return;
+    }
+
+    const feedback = parentFeedbacks[selectedFeedbackIndex];
+    feedback.response = msg;
+    feedback.status = "Replied";
+    feedback.responseDate = new Date().toISOString();
+
+    parentFeedbacks[selectedFeedbackIndex] = feedback;
+    localStorage.setItem("parentFeedbacks", JSON.stringify(parentFeedbacks));
+
+    renderFeedbackTable();
+    responseMessage.value = "";
+    responseStatus.textContent = `✅ Response sent to ${feedback.parentName || "Parent"}.`;
+
+    logActivity();
+  });
+
+  // Traffic simulator (live status)
+  setInterval(() => {
+    const online = Math.random() > 0.3;
+    trafficDot.style.background = online ? "#06d6a0" : "#ef476f";
+    trafficText.textContent = online ? "Active" : "Inactive";
+    activeUsers.textContent = online ? Math.floor(Math.random() * 25 + 5) : 0;
+  }, 2500);
+
+  // Activity logging for dashboard updates
+  function logActivity() {
+    const log = JSON.parse(localStorage.getItem("activityLog")) || [];
+    log.push({ time: new Date().toISOString(), action: "Admin Response Sent" });
+    localStorage.setItem("activityLog", JSON.stringify(log));
+  }
+});

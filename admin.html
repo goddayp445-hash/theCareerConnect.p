@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | CareerConnect Portal</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- MOBILE HAMBURGER -->
+  <div class="menu-toggle" id="adminMenuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="images/img_3.jpg" alt="Admin Profile" class="admin-pic" />
+      <div class="welcome-text">
+        <h3>Welcome, <span id="adminName">Admin</span>!</h3>
+        <p>Good to see you today 😊</p>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="active"><a href="#" data-section="dashboardSection"><i class='bx bx-tachometer'></i><span>Dashboard</span></a></li>
+      <li><a href="#" data-section="studentsSection"><i class='bx bx-user'></i><span>Students</span></a></li>
+      <li><a href="#" data-section="feedbackSection"><i class='bx bx-chat'></i><span>Parent Feedback</span></a></li>
+      <li><a href="#" data-section="boothsSection"><i class='bx bx-briefcase'></i><span>Booths</span></a></li>
+      <li><a href="#" data-section="responsesSection"><i class='bx bx-reply'></i><span>Responses</span></a></li>
+      <li><button id="logoutBtn"><i class='bx bx-log-out'></i> Logout</button></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboardSection" class="dashboard-section active">
+      <h1>Dashboard Overview</h1>
+      <div class="cards">
+        <div class="card">
+          <i class='bx bx-user'></i>
+          <h3>Students</h3>
+          <p id="studentCount">0</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-chat'></i>
+          <h3>Feedbacks</h3>
+          <p id="feedbackCount">0</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-briefcase'></i>
+          <h3>Booths</h3>
+          <p id="boothCount">0</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-smile'></i>
+          <h3>Positive Feedback</h3>
+          <p id="positiveCount">0</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-sad'></i>
+          <h3>Negative Feedback</h3>
+          <p id="negativeCount">0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENTS SECTION -->
+    <section id="studentsSection" class="dashboard-section">
+      <h1>Students</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FEEDBACK SECTION -->
+    <section id="feedbackSection" class="dashboard-section">
+      <h1>Parent Feedback</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Parent</th>
+            <th>Ward</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="feedbackTableBody">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- BOOTHS SECTION -->
+    <section id="boothsSection" class="dashboard-section">
+      <h1>Career Booths</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Booth Name</th>
+            <th>Representative</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="boothTableBody">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- RESPONSES SECTION -->
+    <section id="responsesSection" class="dashboard-section">
+      <h1>Admin Responses</h1>
+      <textarea id="responseMessage" placeholder="Type a response..."></textarea>
+      <button id="sendResponse">Send Response</button>
+      <p id="responseStatus"></p>
+      <ul id="responsesList"></ul>
+    </section>
+
+  </main>
+
+  <script src="admin.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
